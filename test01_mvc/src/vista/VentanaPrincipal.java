@@ -42,7 +42,7 @@ public class VentanaPrincipal extends JFrame { // STUDY Para crear las ventanas 
 		setTitle("Mi primera GUI");
 
 		// Para add un icono, y sustituir el icono de Java
-		setIconImage(Toolkit.getDefaultToolkit().getImage("rocket.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("test01_mvc\\rocket.png"));
 
 		// Organiza los elemetnos en la interface. Lo desactivamos para ubicar los componentes establecidos en la posiciones indicadas.
 		setLayout(null); // STUDY setLayout a Null para establecer los componentes de forma personalizada.

@@ -66,7 +66,7 @@ public class App extends JFrame {
         getContentPane().setBackground(Color.WHITE);
 
         // Creamos la etiqueta imagen.
-        imagen = new JLabel(new ImageIcon("imagen01.png"));
+        imagen = new JLabel(new ImageIcon("test02_eventos_nomvc\\imagen01.png"));
 
         // Le damos una posicion y tamaño
         imagen.setBounds(0, 0, 256, 256);
@@ -88,13 +88,13 @@ public class App extends JFrame {
             // Al Salir el raton.
             @Override
             public void mouseExited(MouseEvent e) {
-                imagen.setIcon(new ImageIcon("imagen01.png"));
+                imagen.setIcon(new ImageIcon("test02_eventos_nomvc\\imagen01.png"));
             }
 
             // Al entrar el raton.
             @Override
             public void mouseEntered(MouseEvent e) {
-                imagen.setIcon(new ImageIcon("imagen02.png"));
+                imagen.setIcon(new ImageIcon("test02_eventos_nomvc\\imagen02.png"));
             }
 
             @Override
