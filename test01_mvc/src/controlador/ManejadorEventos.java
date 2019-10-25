@@ -23,11 +23,18 @@ public class ManejadorEventos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// e tiene toda la informacion sobre el evento, entre ellas el objeto sobre el que ha producico ese evento.
 
-		// getSource(Object) nos permite saber sober que objeto se ejecuta la acción.
+		// getSource(Object) nos permite saber que objeto ejecuta la acción.
 		if(e.getSource() == ventana.getBoton()) {
-			ventana.setTitle("Hola" + ventana.getCajaTexto().getText());
-		} else {
-			ventana.getCajaTexto().setText(null);
+			ventana.setTitle("Robot: " + ventana.getCajaTexto().getText());
+		}
+
+		// Ponemos el foco en la caja de texto
+		if (e.getSource() == ventana.getBotonReset()) {
+			// Se borra el texto
+			ventana.getCajaTexto().setText("");
+
+			// STUDY requestFocus() Se lleva el focus a la caja de texto para volver a escribir.
+			ventana.getCajaTexto().requestFocus();
 		}
 	}
 }
