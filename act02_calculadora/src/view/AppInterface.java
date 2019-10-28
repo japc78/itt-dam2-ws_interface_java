@@ -5,9 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controller.CalculatorActions;
+import controller.AppEvents;
+import controller.AppListener;
 
-public class CalculatorInterface extends JFrame {
+public class AppInterface extends JFrame {
 	/**
 	 *
 	 */
@@ -19,7 +20,7 @@ public class CalculatorInterface extends JFrame {
 	/**
 	 * Constructor sin parametros de la interface de la Caculadora.
 	 */
-	public CalculatorInterface() {
+	public AppInterface() {
 		super("Act2");
 
 		// Se define en el tamaño de la ventana
@@ -86,17 +87,20 @@ public class CalculatorInterface extends JFrame {
 
 		btn5 = new JButton("Reset");
 		btn5.setBounds(15, 185, 97, 30);
+		btn5.setEnabled(false);
 		add(btn5);
 	}
 
-	public void initActions(CalculatorActions actions) {
-		btn1.addActionListener(new CalculatorActions(this));
-		btn2.addActionListener(new CalculatorActions(this));
-		btn3.addActionListener(new CalculatorActions(this));
-		btn4.addActionListener(new CalculatorActions(this));
-		btn5.addActionListener(new CalculatorActions(this));
-		num1.addActionListener(new CalculatorActions(this));
-		num2.addActionListener(new CalculatorActions(this));
+	public void initActions(AppEvents actions, AppListener listener) {
+		btn1.addActionListener(new AppEvents(this));
+		btn2.addActionListener(new AppEvents(this));
+		btn3.addActionListener(new AppEvents(this));
+		btn4.addActionListener(new AppEvents(this));
+		btn5.addActionListener(new AppEvents(this));
+		num1.addActionListener(new AppEvents(this));
+		num2.addActionListener(new AppEvents(this));
+		num1.addKeyListener(new AppListener(this));
+		num2.addKeyListener(new AppListener(this));
 	}
 
 	// Getters and Setters

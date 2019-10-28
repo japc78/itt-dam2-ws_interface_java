@@ -1,11 +1,12 @@
 package controller;
 
-import view.CalculatorInterface;
+import view.AppInterface;
 
 public class App {
 	public static void main(String[] args) {
-		CalculatorInterface calculator = new CalculatorInterface();
-		CalculatorActions actions = new CalculatorActions(calculator);
-		calculator.initActions(actions);
+		AppInterface calculator = new AppInterface();
+		AppEvents actions = new AppEvents(calculator);
+		AppListener listener = new AppListener(calculator);
+		calculator.initActions(actions,listener);
 	}
 }

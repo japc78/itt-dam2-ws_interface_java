@@ -1,0 +1,3 @@
+- [How to Write a Document Listener](https://docs.oracle.com/javase/tutorial/uiswing/events/documentlistener.html)
+- [Text Changed event in JTextArea? How to?](https://stackoverflow.com/questions/7740465/text-changed-event-in-jtextarea-how-to)
+- [How do I add key listener event handler to JTextField?](https://kodejava.org/how-do-i-add-key-listener-event-handler-to-jtextfield/)

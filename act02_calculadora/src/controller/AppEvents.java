@@ -3,12 +3,12 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.CalculatorInterface;
+import view.AppInterface;
 
-public class CalculatorActions implements ActionListener {
-	private CalculatorInterface i;
+public class AppEvents implements ActionListener {
+	private AppInterface i;
 
-	public CalculatorActions(CalculatorInterface i) {
+	public AppEvents(AppInterface i) {
 		this.i = i;
 	}
 
@@ -39,12 +39,14 @@ public class CalculatorActions implements ActionListener {
 
 		} else {
 			i.getLbl3().setText ("Los campos no pueden estar vacíos");
+			i.getNum1().requestFocus();
 		}
 
 		if (e.getSource() == i.getBtn5()) {
 			i.getNum1().setText("");
 			i.getNum2().setText("");
 			i.getNum1().requestFocus();
+			i.getBtn5().setEnabled(false);
 			i.getLbl3().setText("Resultado: ");
 		}
 	}
