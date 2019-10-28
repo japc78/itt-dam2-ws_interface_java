@@ -14,26 +14,38 @@ public class CalculatorActions implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int resultado = 0;
-		int n1 = Integer.parseInt(i.getNum1().getText());
-		int n2 = Integer.parseInt(i.getNum2().getText());
+		String resultado = "";
 
+		if ((!i.getNum1().getText().isEmpty()) && (!i.getNum2().getText().isEmpty())) {
 
-		if (e.getSource() == i.getBtn1()) {
-			resultado = n1+n2;
-		} else if (e.getSource() == i.getBtn2()) {
-			resultado = n1-n2;
-		} else if (e.getSource() == i.getBtn3()) {
-			resultado = n1*n2;
-		} else if (e.getSource() == i.getBtn4()) {
-			resultado = n1/n2;
+			try {
+				double n1 = Double.parseDouble(i.getNum1().getText());
+				double n2 =  Double.parseDouble(i.getNum2().getText());
+
+				if (e.getSource() == i.getBtn1()) {
+					resultado = String.valueOf(n1+n2);
+				} else if (e.getSource() == i.getBtn2()) {
+					resultado = String.valueOf(n1-n2);
+				} else if (e.getSource() == i.getBtn3()) {
+					resultado = String.valueOf(n1*n2);
+				} else if (e.getSource() == i.getBtn4()) {
+					resultado = (n2 > 0 )? String.valueOf(n1/n2):"No es posible dividir por 0";
+				}
+				i.getLbl3().setText("Resultado: " + resultado);
+
+			} catch (NumberFormatException | NullPointerException  ex) {
+				i.getLbl3().setText ("Error en los datos introducidos");
+			}
+
 		} else {
+			i.getLbl3().setText ("Los campos no pueden estar vacíos");
+		}
+
+		if (e.getSource() == i.getBtn5()) {
 			i.getNum1().setText("");
 			i.getNum2().setText("");
 			i.getNum1().requestFocus();
+			i.getLbl3().setText("Resultado: ");
 		}
-
-		i.getLbl3().setText("Resultado: " + resultado);
-
 	}
 }

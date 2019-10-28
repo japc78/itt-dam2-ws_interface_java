@@ -55,7 +55,7 @@ public class CalculatorInterface extends JFrame {
 		add(lbl2);
 
 		lbl3 = new JLabel("Resultado: ");
-		lbl3.setBounds(15, 225, 100, 30);
+		lbl3.setBounds(15, 225, 210, 30);
 		add(lbl3);
 
 		// Entrada de datos
