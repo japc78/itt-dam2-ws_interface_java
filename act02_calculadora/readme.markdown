@@ -5,16 +5,29 @@ Las clases realizadas se encuentran comentadas paso por paso. Algunos comentario
 
 La tecnología utilizada `Java` con las clases `Swing`,  `JButton`, `JFrame`, `JLabel`, `JTextField`, `KeyEvent`,`KeyListener`, `ActionEvent`, `ActionListener`.
 
-## Build .jar
-Construcic'on del jar -> jar cfm calc.jar META-INF/MANIFEST.MF .
-Ejecucion -> java -jar calc.jar
+## Creación del .jar desde la terminal.
+Se crea un archivo `manifest.mf` donde se india la clase principal que ejecta el `main`.
 
+Archivo `manifest.mf` primera y unica.
+```
+Main-Class: controller.App
+```
+Desde la terminal, en la carpeta `bin` donde estan las clases compiladas. El último `.` hace que se empaquete todas los paquetes y clases que esten contenidos en la carpeta `bin`. 
+
+```
+jar cfm ../calc.jar meta-inf/manifest.mf .
+```
+
+Para la ejecución desde la terminal: 
+```
+java -jar calc.jar
+```
+
+## Herramientas y recursos.
 Como herramienta IDE/Editor **Vs Code**, con las siguientes extensiones:
 - [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
 - [Todo Tree](https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one).
-
-Acompaño la actividad con este documento *Markdonw* con la webgrafía utilizada para investión y resolver dudas.
 
 ## WebGrafía
 - [How to Write a Document Listener](https://docs.oracle.com/javase/tutorial/uiswing/events/documentlistener.html)
