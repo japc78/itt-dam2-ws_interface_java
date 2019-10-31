@@ -1,5 +1,5 @@
 # UF4 Actividad 2. Tarea individual. Crear una calculadora en Java.
-Se presenta la actividad partiendo del MVC.
+Se realiza la actividad teniendo como base el patrón de arquitectura MVC.
 
 Las clases realizadas se encuentran comentadas paso por paso. Algunos comentarios contienen la etiqueta `STUDY`, la cual utilizo junto con la extensión **To do Tree** de VS Code, para marcar donde debo repasar y estudiar, y asi acceder de una forma clara y directa en una lista de acciones que crea la extensión.
 
