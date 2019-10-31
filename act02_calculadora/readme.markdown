@@ -6,9 +6,7 @@ Las clases realizadas se encuentran comentadas paso por paso. Algunos comentario
 La tecnología utilizada `Java` con las clases `Swing`,  `JButton`, `JFrame`, `JLabel`, `JTextField`, `KeyEvent`,`KeyListener`, `ActionEvent`, `ActionListener`.
 
 ## Creación del .jar desde la terminal.
-Se crea un archivo `manifest.mf` donde se india la clase principal que ejecta el `main`.
-
-Archivo `manifest.mf` primera y unica.
+Se crea `meta-inf/manifest.mf` en la carpeta `bin`, en el archivo `manifest.mf` se indica, con la siguiente línea, la clase principal que ejecta el `main`.
 ```
 Main-Class: controller.App
 ```
