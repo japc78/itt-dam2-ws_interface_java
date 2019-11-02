@@ -28,23 +28,10 @@ Como herramienta IDE/Editor **Vs Code**, con las siguientes extensiones:
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one).
 
 ## WebGrafía
-- [How to Write a Document Listener](https://docs.oracle.com/javase/tutorial/uiswing/events/documentlistener.html)
-- [Text Changed event in JTextArea? How to?](https://stackoverflow.com/questions/7740465/text-changed-event-in-jtextarea-how-to)
-- [How do I add key listener event handler to JTextField?](https://kodejava.org/how-do-i-add-key-listener-event-handler-to-jtextfield/)
-- [How to make textfield that only accepts numbers](https://www.youtube.com/watch?v=9B5ZgItFxNA)
-- [Cadena Java: ver si una cadena contiene solo números y no letras](https://codeday.me/es/qa/20181212/28682.html)
-- [¿Para qué sirve el uso de e.consume () en java?](https://codeday.me/es/qa/20190411/475313.html)
-- [Ejemplo Eventos del Teclado en Java](http://codejavu.blogspot.com/2014/03/ejemplo-eventos-del-teclado.html)
-- [Mensajes de dialogo en Java con JOptionPane](https://serprogramador.es/programando-mensajes-de-dialogo-en-java-parte-1/)
-- [Removing lines around button after it's clicked in Swing](https://stackoverflow.com/questions/16132777/removing-lines-around-button-after-its-clicked-in-swing)
-- [How can I add padding to a jtextfield](https://stackoverflow.com/questions/8792651/how-can-i-add-padding-to-a-jtextfield)
-- [How to create a .jar file using the terminal](https://stackoverflow.com/questions/10125639/how-to-create-a-jar-file-using-the-terminal)
-- [Difference between dispose and exit on close in java](https://stackoverflow.com/questions/19433358/difference-between-dispose-and-exit-on-close-in-java)
-- [Creating a JAR File](https://docs.oracle.com/javase/tutorial/deployment/jar/build.html)
-- [EMPAQUETAR UNA APP JAVA EN UN JAR](https://www.youtube.com/watch?v=NYlpXTCHp5U)
-- [How to create jar file with package structure?](https://stackoverflow.com/questions/18146361/how-to-create-jar-file-with-package-structure)
-- [How to create a .jar file using the terminal](https://stackoverflow.com/questions/10125639/how-to-create-a-jar-file-using-the-terminal)
-- [Cómo crear y ejecutar un programa Java](http://www.edu4java.com/es/java/crear-ejecutar-programa-java.html)
+-[Tamaño de ventanas y componentes en Java](http://chuwiki.chuidiang.org/index.php?title=Tama%C3%B1o_de_ventanas_y_componentes_en_Java)
+-[Ejemplo de uso del GridBagLayout](http://www.chuidiang.org/java/layout/GridBagLayout/GridBagLayout.php)
+-[¿Cómo funciona GridBagLayout?](https://riptutorial.com/es/swing/example/10132/-como-funciona-gridbaglayout-)
+-[Unicode symbols, entities and codes](https://www.htmlsymbols.xyz/search)
 
 Juan Antonio Pavón Carmona.  
 Programación de servicios y procesos.  
