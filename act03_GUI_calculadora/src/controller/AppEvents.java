@@ -46,7 +46,11 @@ public class AppEvents implements ActionListener {
 
 				// Para quitar los decimales si el número es entero
 				String[] r = resultado.split("[.]");
-				if (Long.parseLong(r[1]) == 0) resultado = r[0];
+
+				// Se comprueba que el resultado no sea un numero largo del tipo E(elevado), para que no salte la excepción al pasear con el Long.
+				if (resultado.indexOf("E") == -1) {
+					if (Long.parseLong(r[1]) == 0) resultado = r[0];
+				}
 
 				// Se muestra el resultado
 				i.getLbl3().setText("Resultado: " + resultado);
