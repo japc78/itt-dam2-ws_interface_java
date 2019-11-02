@@ -1,7 +1,7 @@
 package view;
 
 import java.awt.GridLayout;
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -19,7 +19,7 @@ public class AppInterfaceBottom extends JPanel{
 	 *
 	 */
 	private static final long serialVersionUID = -1550040107325142497L;
-	private static TreeMap<Integer, JButton> btns = new TreeMap<Integer,JButton>();
+	private static ArrayList<JButton> btns = new ArrayList<>();
 
 	public AppInterfaceBottom() {
 		setLayout(new GridLayout(5,4));
@@ -36,13 +36,13 @@ public class AppInterfaceBottom extends JPanel{
 		for (int i = 0; i < 20; i++) {
 			// Solo para los numeros del 0 al 9
 			if ((i > 3) && (i < 15) && ((i+1)%4 != 0) || (i == 12) || (i == 17)) {
-				btns.put(i, new JButton(String.valueOf(n)));
+				btns.add(new JButton(String.valueOf(n)));
 				btns.get(i).setFont(font.getFontButtom());
 				btns.get(i).setFocusPainted(false);
 				add(btns.get(i));
 				n--;
 			} else {
-				btns.put(i, new JButton(String.valueOf("")));
+				btns.add(new JButton(String.valueOf("")));
 				btns.get(i).setFont(font.getFontButtom());
 				btns.get(i).setFocusPainted(false);
 				add(btns.get(i));
@@ -65,7 +65,7 @@ public class AppInterfaceBottom extends JPanel{
 	/**
 	 * @return the btns
 	 */
-	public static TreeMap<Integer, JButton> getBtns() {
+	public static ArrayList<JButton> getBtns() {
 		return btns;
 	}
 }
