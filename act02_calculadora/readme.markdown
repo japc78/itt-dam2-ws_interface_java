@@ -12,8 +12,10 @@ Main-Class: controller.App
 ```
 Desde la terminal, en la carpeta `bin` donde estan las clases compiladas. El último `.` hace que se empaquete todas los paquetes y clases que esten contenidos en la carpeta `bin`. 
 
+El modificador “cvfm” en la llamada a jar.exe significa: "c” crear un  jar; “v” mostrar la salida detallada; “f” especificar el nombre del archivo jar; “m” especificar el nombre del archivo manifest. ***La última línea escrita en el archivo MANIFEST.MF, debe dejarse al menos una línea en blanco.**
+
 ```
-jar cfm ../calc.jar meta-inf/manifest.mf .
+jar cfmv ../calc.jar meta-inf/manifest.mf .
 ```
 
 Para la ejecución desde la terminal: 
