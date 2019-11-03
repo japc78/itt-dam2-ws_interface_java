@@ -11,7 +11,8 @@ public class PanelScreen extends JPanel {
 	private GridBagConstraints grid;
 	private JLabel lbl1, lbl2;
 	double result;
-	String operation;
+	String number;
+	char operation;
 
 	/**
 	 *
@@ -19,7 +20,7 @@ public class PanelScreen extends JPanel {
 	private static final long serialVersionUID = 374177693461494474L;
 
 	public PanelScreen() {
-		operation = "";
+		number = "0";
 		result = 0;
 		// Se define un grid para el panel.
 		setLayout(new GridBagLayout());
@@ -36,7 +37,7 @@ public class PanelScreen extends JPanel {
 	public void initComponents() {
 		AppStyles styles = new AppStyles();
 		// Label donde se ven los resultados.
-			lbl1 = new JLabel(operation);
+			lbl1 = new JLabel(number);
 
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -112,14 +113,29 @@ public class PanelScreen extends JPanel {
 	/**
 	 * @return the operation
 	 */
-	public String getOperation() {
+	public String getNumber() {
+		return number;
+	}
+
+	/**
+	 * @param operation the operation to set
+	 */
+	public void setNumber(String operation) {
+		this.number = operation;
+	}
+
+
+	/**
+	 * @return the operation
+	 */
+	public char getOperation() {
 		return operation;
 	}
 
 	/**
 	 * @param operation the operation to set
 	 */
-	public void setOperation(String operation) {
+	public void setOperation(char operation) {
 		this.operation = operation;
 	}
 
