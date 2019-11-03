@@ -33,13 +33,13 @@ public class AppEvents implements ActionListener {
 				double n2 =  Double.parseDouble(i.getNum2().getText());
 
 				// Asignación de operaciones a los botones (Sumar, Restar, Multiplicar, dividir)
-				if (e.getSource() == i.getBtn1()) {
+				if (e.getSource().equals(i.getBtn1())) {
 					resultado = String.valueOf(n1+n2);
-				} else if (e.getSource() == i.getBtn2()) {
+				} else if (e.getSource().equals(i.getBtn2())) {
 					resultado = String.valueOf(n1-n2);
-				} else if (e.getSource() == i.getBtn3()) {
+				} else if (e.getSource().equals(i.getBtn3())) {
 					resultado = String.valueOf(n1*n2);
-				} else if (e.getSource() == i.getBtn4()) {
+				} else if (e.getSource().equals(i.getBtn4())) {
 					// Se comprueba que si el segundo número es 0
 					resultado = (n2 != 0 )? String.valueOf(n1/n2):"Error al dividir por 0";
 				}
