@@ -8,8 +8,10 @@ import javax.swing.border.Border;
  * AppInterfaceTop
  */
 public class PanelScreen extends JPanel {
-	private JLabel lbl1, lbl2;
 	private GridBagConstraints grid;
+	private JLabel lbl1, lbl2;
+	double result;
+	String operation;
 
 	/**
 	 *
@@ -17,6 +19,8 @@ public class PanelScreen extends JPanel {
 	private static final long serialVersionUID = 374177693461494474L;
 
 	public PanelScreen() {
+		operation = "";
+		result = 0;
 		// Se define un grid para el panel.
 		setLayout(new GridBagLayout());
 		grid = new GridBagConstraints();
@@ -30,10 +34,9 @@ public class PanelScreen extends JPanel {
 	}
 
 	public void initComponents() {
-		Border borderBlack = BorderFactory.createLineBorder(Color.BLACK, 2);
-		Border borderRed = BorderFactory.createLineBorder(Color.RED, 2);
+		AppStyles styles = new AppStyles();
 		// Label donde se ven los resultados.
-			lbl1 = new JLabel("Operacion");
+			lbl1 = new JLabel(operation);
 
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -43,11 +46,13 @@ public class PanelScreen extends JPanel {
 			grid.gridwidth = 4;
 			grid.gridheight = 1;
 
-			lbl1.setBorder(borderBlack);
 			add(lbl1, grid);
 
 		// Label donde se la operacion.
-			lbl2 = new JLabel("Resultados");
+			lbl2 = new JLabel(String.valueOf(result));
+			lbl2.setFont(styles.getFontScreen());
+			lbl2.setHorizontalAlignment(JTextField.RIGHT);
+			lbl2.setBorder(BorderFactory.createCompoundBorder(lbl2.getBorder(), styles.getEmpyBorder()));
 
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -59,7 +64,6 @@ public class PanelScreen extends JPanel {
 			// Tamaño cuantas celdas ocupara en el grid.
 			grid.gridwidth = 4;
 			grid.gridheight = 2;
-			lbl2.setBorder(borderRed);
 			add(lbl2, grid);
 	}
 
@@ -89,6 +93,34 @@ public class PanelScreen extends JPanel {
 	 */
 	public void setLbl2(JLabel lbl2) {
 		this.lbl2 = lbl2;
+	}
+
+	/**
+	 * @return the result
+	 */
+	public double getResult() {
+		return result;
+	}
+
+	/**
+	 * @param result the result to set
+	 */
+	public void setResult(double result) {
+		this.result = result;
+	}
+
+	/**
+	 * @return the operation
+	 */
+	public String getOperation() {
+		return operation;
+	}
+
+	/**
+	 * @param operation the operation to set
+	 */
+	public void setOperation(String operation) {
+		this.operation = operation;
 	}
 
 }

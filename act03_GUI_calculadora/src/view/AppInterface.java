@@ -80,6 +80,7 @@ public class AppInterface extends JFrame {
 		// Panel inferior
 			panelButtons = new PanelButtons();
 			panelButtons.setBorder(null);
+			panelButtons.setBackground(null);
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
 			grid.gridy = 3;
@@ -92,9 +93,10 @@ public class AppInterface extends JFrame {
 			add(panelButtons, grid);
 	}
 
-	public void initActions(AppActionListener actions) {
+	public void initActions(AppActionListener actions, AppMouseListener mouse) {
 		for (JButton btn : panelButtons.getBtns()) {
 			btn.addActionListener(new AppActionListener(this));
+			btn.addMouseListener(new AppMouseListener(this));
 		}
 	}
 

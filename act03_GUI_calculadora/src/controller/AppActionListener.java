@@ -20,6 +20,9 @@ import view.AppInterface;
 
 public class AppActionListener implements ActionListener {
 	private AppInterface i;
+	double result;
+	String number = "";
+	char operation;
 
 	public AppActionListener(AppInterface i) {
 		this.i = i;
@@ -28,13 +31,66 @@ public class AppActionListener implements ActionListener {
 	// Se implementa en el método la lógica para el funcionamiento del programa.
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		for (JButton btn : i.getPanelButtons().getBtns()) {
-			if (e.getSource().equals(btn)) {
-				System.out.println("pasa");
-				i.getPanelScreen().getLbl2().setText("pasa");
-			}
+		number = i.getPanelScreen().getOperation();
+		switch (e.getActionCommand()) {
+			case "+":
+				operation = '+';
+			break;
 
+			case "-":
+				operation = '-';
+			break;
+
+			case "×":
+				operation = 'x';
+			break;
+
+			case "÷":
+				operation = '/';
+			break;
+
+			case "±":
+				number =  (Double.parseDouble(number) > 0)? "-" + number : number.substring(1);
+				i.getPanelScreen().setOperation(number);
+			break;
+
+			case ",":
+				if (i.getPanelScreen().getOperation().indexOf(".") == -1) {
+					number += ".";
+					i.getPanelScreen().setOperation(number);
+				}
+			break;
+
+			case "=":
+
+
+			break;
+
+			case "CE":
+				i.getPanelScreen().setOperation("");
+			break;
+
+			default:
+				for (JButton btn : i.getPanelButtons().getBtns()) {
+					if (e.getSource().equals(btn)) {
+						number += btn.getText();
+						i.getPanelScreen().setOperation(number);
+						// i.getPanelScreen().getLbl2().setText(btn.getText());
+					}
+				}
+			break;
 		}
+
+/* 		for (JButton btn : i.getPanelButtons().getBtns()) {
+
+			if ((e.getSource().equals(btn)) && ((btn.getText().charAt(0) >= 0) || ((btn.getText().charAt(0) <= 9)))) {
+				System.out.println("pasa");
+				operation += btn.getText();
+				// i.getPanelScreen().getLbl2().setText(btn.getText());
+			}
+		}*/
+		i.getPanelScreen().getLbl2().setText(number);
+
 
 	}
 }

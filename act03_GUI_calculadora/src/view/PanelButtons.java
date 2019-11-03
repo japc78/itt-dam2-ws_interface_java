@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import controller.AppActionListener;
 import controller.AppKeyListener;
@@ -47,9 +48,11 @@ public class PanelButtons extends JPanel{
 			btns.get(i).setContentAreaFilled(false);
 			btns.get(i).setBackground(styles.color1);
 			btns.get(i).setFocusPainted(false);
+			btns.get(i).setHorizontalAlignment(SwingConstants.CENTER);
 			add(btns.get(i));
 		}
 
+		btns.get(2).setText("CE");
 		btns.get(18).setText(",");
 		btns.get(3).setText("÷");
 		btns.get(7).setText("×");
