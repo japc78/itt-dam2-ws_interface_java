@@ -7,7 +7,7 @@ import javax.swing.border.Border;
 /**
  * AppInterfaceTop
  */
-public class AppInterfaceTop extends JPanel {
+public class PanelScreen extends JPanel {
 	private JLabel lbl1, lbl2;
 	private GridBagConstraints grid;
 
@@ -16,7 +16,7 @@ public class AppInterfaceTop extends JPanel {
 	 */
 	private static final long serialVersionUID = 374177693461494474L;
 
-	public AppInterfaceTop() {
+	public PanelScreen() {
 		// Se define un grid para el panel.
 		setLayout(new GridBagLayout());
 		grid = new GridBagConstraints();
@@ -62,4 +62,34 @@ public class AppInterfaceTop extends JPanel {
 			lbl2.setBorder(borderRed);
 			add(lbl2, grid);
 	}
+
+	/**
+	 * @return the lbl1
+	 */
+	public JLabel getLbl1() {
+		return lbl1;
+	}
+
+	/**
+	 * @param lbl1 the lbl1 to set
+	 */
+	public void setLbl1(JLabel lbl1) {
+		this.lbl1 = lbl1;
+	}
+
+	/**
+	 * @return the lbl2
+	 */
+	public JLabel getLbl2() {
+		return lbl2;
+	}
+
+	/**
+	 * @param lbl2 the lbl2 to set
+	 */
+	public void setLbl2(JLabel lbl2) {
+		this.lbl2 = lbl2;
+	}
+
+
 }

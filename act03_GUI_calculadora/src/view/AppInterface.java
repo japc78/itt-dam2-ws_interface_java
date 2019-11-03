@@ -2,7 +2,8 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
-import java.io.IOException;
+
+import controller.AppActionListener;
 
 
 /**
@@ -21,6 +22,9 @@ import java.io.IOException;
 public class AppInterface extends JFrame {
 	private static final long serialVersionUID = 3294244089057792643L;
 	private GridBagConstraints grid;
+	private JPanel panelScreen;
+	private PanelButtons panelButtons;
+
 
 	/**
 	 * Constructor sin parametros de la interface de la Caculadora.
@@ -59,6 +63,7 @@ public class AppInterface extends JFrame {
 	}
 
 	public void initComponets() {
+		panelScreen = new PanelScreen();
 		// Panel superior
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -69,9 +74,10 @@ public class AppInterface extends JFrame {
 			grid.gridheight = 3;
 
 			// Se añade el panel pasandole grid con los voleres anteriormente declardos.
-			add(new AppInterfaceTop(), grid);
+			add(panelScreen, grid);
 
 		// Panel inferior
+			panelButtons = new PanelButtons();
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
 			grid.gridy = 3;
@@ -81,6 +87,41 @@ public class AppInterface extends JFrame {
 			grid.gridheight = 5;
 
 			// Se añade el panel pasandole grid con los voleres anteriormente declardos.
-			add(new AppInterfaceBottom(), grid);
+			add(panelButtons, grid);
+
+
+			AppActionListener actions = new AppActionListener(panelButtons);
+			panelButtons.initActions(actions);
+
+		}
+
+	/**
+	 * @return the panelScreen
+	 */
+	public JPanel getPanelScreen() {
+		return panelScreen;
 	}
+
+	/**
+	 * @param panelScreen the panelScreen to set
+	 */
+	public void setPanelScreen(JPanel panelScreen) {
+		this.panelScreen = panelScreen;
+	}
+
+	/**
+	 * @return the panelButtons
+	 */
+	public JPanel getPanelButtons() {
+		return panelButtons;
+	}
+
+	/**
+	 * @param panelButtons the panelButtons to set
+	 */
+	public void setPanelButtons(PanelButtons panelButtons) {
+		this.panelButtons = panelButtons;
+	}
+
+
 }

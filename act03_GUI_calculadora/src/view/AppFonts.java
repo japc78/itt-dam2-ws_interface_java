@@ -7,10 +7,10 @@ import java.io.IOException;
 /**
  * AppInterfaceFont
  */
-public class AppInterfaceFont {
+public class AppFonts {
 	private Font font, fontSizeSmall, fontSizeBig, fontButtom;
 
-	public AppInterfaceFont() {
+	public AppFonts() {
 		// Se crea la fuente
 		try {
 			font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("../resources/lightsider.ttf"));
