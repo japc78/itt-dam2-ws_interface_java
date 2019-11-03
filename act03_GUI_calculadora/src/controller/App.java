@@ -7,7 +7,7 @@ import view.AppInterface;
  * @author Juan Antonio Pavón Carmona
  * @category ITT DAM Desarrollo de Interfaces
  * @see AppInterface
- * @see AppEvents
+ * @see AppActionListener
  * @see AppListeners
  * @see https://github.com/japc78/itt-dam2-ws_interface_java.git
  * @version 1.0
@@ -18,8 +18,8 @@ import view.AppInterface;
 public class App {
 	public static void main(String[] args) {
 		AppInterface calculator = new AppInterface();
-		// AppEvents actions = new AppEvents(calculator);
+		AppActionListener actions = new AppActionListener(calculator);
 		// AppListener listener = new AppListener(calculator);
-		// calculator.initActions(actions,listener);
+		calculator.initActions(actions);
 	}
 }
