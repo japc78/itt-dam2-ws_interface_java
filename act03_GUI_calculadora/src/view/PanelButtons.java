@@ -28,7 +28,7 @@ public class PanelButtons extends JPanel{
 	}
 
 	public void initComponents() {
-		AppInterfaceFont font = new AppInterfaceFont();
+		AppStyles styles = new AppStyles();
 		// Se crean los botones
 		int n = 9;
 		for (int i = 0; i < 20; i++) {
@@ -40,7 +40,12 @@ public class PanelButtons extends JPanel{
 				btns.add(new JButton(String.valueOf("")));
 			}
 
-			btns.get(i).setFont(font.getFontButtom());
+			btns.get(i).setFont(styles.getFontButtom());
+			btns.get(i).setBorder(null);
+			btns.get(i).setBorder(styles.empyBorder);
+			btns.get(i).setBorderPainted(false);
+			btns.get(i).setContentAreaFilled(false);
+			btns.get(i).setBackground(styles.color1);
 			btns.get(i).setFocusPainted(false);
 			add(btns.get(i));
 		}

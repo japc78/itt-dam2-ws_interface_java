@@ -79,6 +79,7 @@ public class AppInterface extends JFrame {
 
 		// Panel inferior
 			panelButtons = new PanelButtons();
+			panelButtons.setBorder(null);
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
 			grid.gridy = 3;
