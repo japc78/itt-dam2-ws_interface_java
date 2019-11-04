@@ -4,6 +4,8 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.AppActionListener;
+import controller.AppKeyListener;
+import controller.AppMouseListener;
 
 import java.io.IOException;
 
@@ -81,6 +83,7 @@ public class AppInterface extends JFrame {
 			panelButtons = new PanelButtons();
 			panelButtons.setBorder(null);
 			panelButtons.setBackground(null);
+			panelButtons.requestFocus(true);
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
 			grid.gridy = 3;
@@ -93,7 +96,8 @@ public class AppInterface extends JFrame {
 			add(panelButtons, grid);
 	}
 
-	public void initActions(AppActionListener actions, AppMouseListener mouse) {
+	public void initActions(AppActionListener actions, AppMouseListener mouse, AppKeyListener key) {
+		panelButtons.addKeyListener(new AppKeyListener(this));
 		for (JButton btn : panelButtons.getBtns()) {
 			btn.addActionListener(new AppActionListener(this));
 			btn.addMouseListener(new AppMouseListener(this));
