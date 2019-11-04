@@ -1,11 +1,10 @@
-package controller;
+package view;
 
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
-
-import view.*;
 
 /**
  * AppMouseListener

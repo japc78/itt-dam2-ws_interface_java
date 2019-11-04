@@ -29,22 +29,11 @@ public class AppKeyListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		i.getToolkit().beep();
-		char c = e.getKeyChar();
-		if (c == '0') {
-			System.out.println("Pasa");
 
-		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		i.getToolkit().beep();
-		char c = e.getKeyChar();
-		if (c == '0') {
-			System.out.println("Pasa");
-
-		}
 	}
 
 }

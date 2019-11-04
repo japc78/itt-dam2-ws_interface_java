@@ -1,6 +1,7 @@
 package controller;
 
 import view.AppInterface;
+import view.AppMouseListener;
 
 /**
  * App. Clase principal que arranca el programa.
@@ -20,7 +21,7 @@ public class App {
 		AppInterface calculator = new AppInterface();
 		AppActionListener actions = new AppActionListener(calculator);
 		AppMouseListener mouse = new AppMouseListener(calculator);
-		AppKeyListener key = new AppKeyListener(calculator);
-		calculator.initActions(actions, mouse, key);
+		// AppListener listener = new AppListener(calculator);
+		calculator.initActions(actions, mouse);
 	}
 }

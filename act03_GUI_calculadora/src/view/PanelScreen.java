@@ -9,12 +9,10 @@ import javax.swing.border.Border;
  */
 public class PanelScreen extends JPanel {
 	private GridBagConstraints grid;
-	private JTextField  screen;
-	private JLabel history;
-	private double result;
-	private String number;
-	private char operation;
-	private Boolean newoperation;
+	private JLabel lbl1, lbl2;
+	double result;
+	String number;
+	char operation;
 
 	/**
 	 *
@@ -29,7 +27,6 @@ public class PanelScreen extends JPanel {
 		grid = new GridBagConstraints();
 		grid.weightx = 1;
 		grid.weighty = 1;
-		grid.insets = new Insets(2, 2, 2, 2);
 		grid.fill = GridBagConstraints.BOTH;
 
 		initComponents();
@@ -40,7 +37,7 @@ public class PanelScreen extends JPanel {
 	public void initComponents() {
 		AppStyles styles = new AppStyles();
 		// Label donde se ven los resultados.
-			history = new JLabel(number);
+			lbl1 = new JLabel(number);
 
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -50,18 +47,13 @@ public class PanelScreen extends JPanel {
 			grid.gridwidth = 4;
 			grid.gridheight = 1;
 
-			add(history, grid);
+			add(lbl1, grid);
 
 		// Label donde se la operacion.
-			screen = new JTextField(String.valueOf(result));
-			screen.setFont(styles.getFontScreen());
-			screen.setCaretColor(styles.getColorCursor());
-			screen.setCaretPosition(0);
-			screen.setBackground(null);
-			screen.setHorizontalAlignment(JTextField.RIGHT);
-			screen.setBorder(null);
-			screen.requestFocus();
-			screen.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+			lbl2 = new JLabel(String.valueOf(result));
+			lbl2.setFont(styles.getFontScreen());
+			lbl2.setHorizontalAlignment(JTextField.RIGHT);
+			lbl2.setBorder(BorderFactory.createCompoundBorder(lbl2.getBorder(), styles.getEmpyBorder()));
 
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -73,91 +65,78 @@ public class PanelScreen extends JPanel {
 			// Tamaño cuantas celdas ocupara en el grid.
 			grid.gridwidth = 4;
 			grid.gridheight = 2;
-			add(screen, grid);
+			add(lbl2, grid);
 	}
 
-	// Getters and Setters
-		/**
-		 * @return the screen
-		 */
-		public JTextField getScreen() {
-			return screen;
-		}
+	/**
+	 * @return the lbl1
+	 */
+	public JLabel getLbl1() {
+		return lbl1;
+	}
 
-		/**
-		 * @param screen the screen to set
-		 */
-		public void setScreen(JTextField screen) {
-			this.screen = screen;
-		}
+	/**
+	 * @param lbl1 the lbl1 to set
+	 */
+	public void setLbl1(JLabel lbl1) {
+		this.lbl1 = lbl1;
+	}
 
-		/**
-		 * @return the history
-		 */
-		public JLabel getHistory() {
-			return history;
-		}
+	/**
+	 * @return the lbl2
+	 */
+	public JLabel getLbl2() {
+		return lbl2;
+	}
 
-		/**
-		 * @param history the history to set
-		 */
-		public void setHistory(JLabel history) {
-			this.history = history;
-		}
+	/**
+	 * @param lbl2 the lbl2 to set
+	 */
+	public void setLbl2(JLabel lbl2) {
+		this.lbl2 = lbl2;
+	}
 
-		/**
-		 * @return the result
-		 */
-		public double getResult() {
-			return result;
-		}
+	/**
+	 * @return the result
+	 */
+	public double getResult() {
+		return result;
+	}
 
-		/**
-		 * @param result the result to set
-		 */
-		public void setResult(double result) {
-			this.result = result;
-		}
+	/**
+	 * @param result the result to set
+	 */
+	public void setResult(double result) {
+		this.result = result;
+	}
 
-		/**
-		 * @return the number
-		 */
-		public String getNumber() {
-			return number;
-		}
+	/**
+	 * @return the operation
+	 */
+	public String getNumber() {
+		return number;
+	}
 
-		/**
-		 * @param number the number to set
-		 */
-		public void setNumber(String number) {
-			this.number = number;
-		}
+	/**
+	 * @param operation the operation to set
+	 */
+	public void setNumber(String operation) {
+		this.number = operation;
+	}
 
-		/**
-		 * @return the operation
-		 */
-		public char getOperation() {
-			return operation;
-		}
 
-		/**
-		 * @param operation the operation to set
-		 */
-		public void setOperation(char operation) {
-			this.operation = operation;
-		}
+	/**
+	 * @return the operation
+	 */
+	public char getOperation() {
+		return operation;
+	}
 
-		/**
-		 * @return the newoperation
-		 */
-		public Boolean getNewoperation() {
-			return newoperation;
-		}
+	/**
+	 * @param operation the operation to set
+	 */
+	public void setOperation(char operation) {
+		this.operation = operation;
+	}
 
-		/**
-		 * @param newoperation the newoperation to set
-		 */
-		public void setNewoperation(Boolean newoperation) {
-			this.newoperation = newoperation;
-		}
 }

@@ -119,7 +119,7 @@ public class AppActionListener implements ActionListener {
 				// i.getPanelScreen().getLbl2().setText(btn.getText());
 			}
 		}*/
-		i.getPanelScreen().getScreen().setText(number);
+		i.getPanelScreen().getLbl2().setText(number);
 
 
 	}

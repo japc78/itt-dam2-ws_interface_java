@@ -13,23 +13,22 @@ import javax.swing.border.Border;
  */
 public class AppStyles {
 	private Font font, fontButtom, fontScreen;
-	Color color1, colorTxt, colorCursor;
+	Color color1, colorTxt;
 	Border border1, borderPadding, empyBorder;
 
 
 	public AppStyles() {
 		// Fuente
 		try {
-			font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("../resources/Quantico-Italic.ttf"));
+			font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("../resources/lightsider.ttf"));
 		} catch (FontFormatException | IOException e)  {
 			e.printStackTrace();
 		}
-		fontButtom = font.deriveFont(Font.PLAIN, 24);
-		fontScreen = font.deriveFont(Font.PLAIN, 42);
+		fontButtom = font.deriveFont(Font.PLAIN, 22);
+		fontScreen = font.deriveFont(Font.PLAIN, 24);
 		// Colores
 		colorTxt = new Color(0, 0, 0);
 		color1 = new Color(75, 215, 200);
-		colorCursor = new Color(238, 238, 238);
 
 		// Borders
 		border1 = BorderFactory.createLineBorder(Color.BLACK, 3);
@@ -85,20 +84,6 @@ public class AppStyles {
 	 */
 	public void setColorTxt(Color colorTxt) {
 		this.colorTxt = colorTxt;
-	}
-
-	/**
-	 * @return the colorTxt
-	 */
-	public Color getColorCursor() {
-		return colorTxt;
-	}
-
-	/**
-	 * @param colorTxt the colorTxt to set
-	 */
-	public void setColorCursor(Color colorCursor) {
-		this.colorCursor = colorCursor;
 	}
 
 	/**
