@@ -20,10 +20,10 @@ import view.AppInterface;
 
 public class AppActionListener implements ActionListener {
 	private AppInterface i;
-	double result = 0;
-	String number;
-	char operation;
-	int cont;
+	private double numberTmp;
+	private String result;
+	private char operation;
+	private boolean newOperation;
 
 	public AppActionListener(AppInterface i) {
 		this.i = i;
@@ -32,9 +32,10 @@ public class AppActionListener implements ActionListener {
 	// Se implementa en el método la lógica para el funcionamiento del programa.
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		number = i.getPanelScreen().getNumber();
-		cont = 0;
+		result = i.getPanelScreen().getScreen().getText();
+		newOperation = i.getPanelScreen().isNewOperation();
 		operation = i.getPanelScreen().getOperation();
+		numberTmp = i.getPanelScreen().getNumberTmp();
 		switch (e.getActionCommand()) {
 			case "+":
 				operation('+');
@@ -53,61 +54,69 @@ public class AppActionListener implements ActionListener {
 			break;
 
 			case "±":
-				number =  (Double.parseDouble(number) > 0)? "-" + number : number.substring(1);
-				i.getPanelScreen().setNumber(number);
+				result = i.getPanelScreen().getScreen().getText();
+				result =  (Double.parseDouble(result) > 0)? "-" + result : result.substring(1);
+				i.getPanelScreen().getScreen().setText(result);
 			break;
 
 			case ",":
-				if (i.getPanelScreen().getNumber().indexOf(".") == -1) {
-					number += ".";
-					i.getPanelScreen().setNumber(number);
+				if (i.getPanelScreen().getResult().indexOf(".") == -1) {
+					result += ".";
+					i.getPanelScreen().setResult(result);
 				}
+			break;
+
+			case "CE":
+				i.getPanelScreen().getScreen().setText("0");
+				i.getPanelScreen().setNewOperation(true);
 			break;
 
 			case "=":
 				// Asignación de operaciones a los botones (Sumar, Restar, Multiplicar, dividir)
 				try {
 					if (operation == '+') {
-						result+= Double.parseDouble(number);
-						System.out.println("Resultado: " + result);
+						result = String.valueOf(numberTmp + Double.parseDouble(result));
+						System.out.println("Resultado: "  + numberTmp);
 					} else if (operation == '-') {
-						result-= Double.parseDouble(number);
-						System.out.println("Resultado: " + result);
+						result = String.valueOf(numberTmp - Double.parseDouble(result));
+						System.out.println("Resultado: " + numberTmp);
 					} else if (operation == '*') {
-						result*= Double.parseDouble(number);
-						System.out.println("Resultado: " + result);
+						result = String.valueOf(numberTmp * Double.parseDouble(result));
+						System.out.println("Resultado: " + numberTmp);
 					} else if (operation == '/') {
 						// Se comprueba que si el segundo número es 0
-						result /= Double.parseDouble(number);
-						System.out.println("Resultado: " + result);
+						result = (Double.parseDouble(result) != 0 )? String.valueOf(numberTmp/Double.parseDouble(result)):"Error / por 0";
+						System.out.println("Resultado: " + numberTmp);
 					}
+
+					// Para quitar los decimales si el número es entero
+					String[] r = result.split("[.]");
+
+					// Se comprueba que el resultado no sea un numero largo del tipo E(elevado), para que no salte la excepción al pasear con el Long.
+					if (result.indexOf("E") == -1) {
+						if (Long.parseLong(r[1]) == 0) result = r[0];
+					}
+
 				} catch (NullPointerException | NumberFormatException ex) {
-					number = "ERROR";
+					result = "ERROR";
 					ex.printStackTrace();
 				}
-				i.getPanelScreen().setNumber(String.valueOf(result));
-				i.getPanelScreen().setOperation('0');
-			break;
 
-			case "CE":
-				i.getPanelScreen().setNumber("");
+				i.getPanelScreen().getScreen().setText(result);
+				i.getPanelScreen().setOperation('0');
+				i.getPanelScreen().setNewOperation(true);
 			break;
 
 			default:
 				for (JButton btn : i.getPanelButtons().getBtns()) {
 					if (e.getSource().equals(btn)) {
-						if (cont == 1) {
-							i.getPanelScreen().setNumber("");
-							//number += btn.getText();
-							i.getPanelScreen().setNumber(number + btn.getText());
-							cont = 0;
-						} else {
-							i.getPanelScreen().setNumber(number + btn.getText());
-						}
 
-						// i.getPanelScreen().getLbl2().setText(btn.getText());
+						if (i.getPanelScreen().getOperation() != '0') result = ""; i.getPanelScreen().getScreen().setText("");
+						if (!i.getPanelScreen().isNewOperation()) result = ""; i.getPanelScreen().getScreen().setText("");
+						i.getPanelScreen().getScreen().setText(result + btn.getText());
 					}
 				}
+				// i.getPanelScreen().getScreen().setText(number);
 			break;
 		}
 
@@ -119,15 +128,17 @@ public class AppActionListener implements ActionListener {
 				// i.getPanelScreen().getLbl2().setText(btn.getText());
 			}
 		}*/
-		i.getPanelScreen().getLbl2().setText(number);
+
 
 
 	}
 
+	// Metodo de operaciones
 	private void operation(char c) {
 		i.getPanelScreen().setOperation(c);
-		result = Double.parseDouble(i.getPanelScreen().getNumber());
-		System.out.println("Pasa " + result);
-		cont = 1;
+		numberTmp = Double.parseDouble(i.getPanelScreen().getScreen().getText());
+		i.getPanelScreen().setNumberTmp(numberTmp);
+		i.getPanelScreen().setNewOperation(false);
+		System.out.println("Pasa a " + c + " " + numberTmp);
 	}
 }

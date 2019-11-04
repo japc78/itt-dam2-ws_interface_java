@@ -1,7 +1,6 @@
 package controller;
 
 import view.AppInterface;
-import view.AppMouseListener;
 
 /**
  * App. Clase principal que arranca el programa.

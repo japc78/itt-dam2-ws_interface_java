@@ -2,17 +2,18 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 /**
  * AppInterfaceTop
  */
 public class PanelScreen extends JPanel {
 	private GridBagConstraints grid;
-	private JLabel lbl1, lbl2;
-	double result;
-	String number;
-	char operation;
+	private JLabel history, screen;
+	private double numberTmp;
+	private String result;
+	private char operation;
+	private boolean newOperation;
+
 
 	/**
 	 *
@@ -20,24 +21,26 @@ public class PanelScreen extends JPanel {
 	private static final long serialVersionUID = 374177693461494474L;
 
 	public PanelScreen() {
-		number = "0";
-		result = 0;
+		result = "0";
+		numberTmp = 0;
+		operation = '0';
 		// Se define un grid para el panel.
 		setLayout(new GridBagLayout());
 		grid = new GridBagConstraints();
 		grid.weightx = 1;
 		grid.weighty = 1;
 		grid.fill = GridBagConstraints.BOTH;
-
 		initComponents();
-
 		setVisible(true);
 	}
 
 	public void initComponents() {
 		AppStyles styles = new AppStyles();
 		// Label donde se ven los resultados.
-			lbl1 = new JLabel(number);
+			history = new JLabel();
+			history.setFont(styles.getFontHistory());
+			history.setHorizontalAlignment(JTextField.RIGHT);
+			history.setBorder(BorderFactory.createCompoundBorder(history.getBorder(), styles.getEmpyBorder()));
 
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -47,13 +50,13 @@ public class PanelScreen extends JPanel {
 			grid.gridwidth = 4;
 			grid.gridheight = 1;
 
-			add(lbl1, grid);
+			add(history, grid);
 
-		// Label donde se la operacion.
-			lbl2 = new JLabel(String.valueOf(result));
-			lbl2.setFont(styles.getFontScreen());
-			lbl2.setHorizontalAlignment(JTextField.RIGHT);
-			lbl2.setBorder(BorderFactory.createCompoundBorder(lbl2.getBorder(), styles.getEmpyBorder()));
+		// Label para la pantalla
+			screen = new JLabel(result);
+			screen.setFont(styles.getFontScreen());
+			screen.setHorizontalAlignment(JTextField.RIGHT);
+			screen.setBorder(BorderFactory.createCompoundBorder(screen.getBorder(), styles.getEmpyBorder()));
 
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
@@ -65,78 +68,94 @@ public class PanelScreen extends JPanel {
 			// Tamaño cuantas celdas ocupara en el grid.
 			grid.gridwidth = 4;
 			grid.gridheight = 2;
-			add(lbl2, grid);
+			add(screen, grid);
 	}
+		// Getteres
+			/**
+			 * @return the history
+			 */
+			public JLabel getHistory() {
+				return history;
+			}
 
-	/**
-	 * @return the lbl1
-	 */
-	public JLabel getLbl1() {
-		return lbl1;
-	}
+			/**
+			 * @param history the history to set
+			 */
+			public void setHistory(JLabel history) {
+				this.history = history;
+			}
 
-	/**
-	 * @param lbl1 the lbl1 to set
-	 */
-	public void setLbl1(JLabel lbl1) {
-		this.lbl1 = lbl1;
-	}
+			/**
+			 * @return the screen
+			 */
+			public JLabel getScreen() {
+				return screen;
+			}
 
-	/**
-	 * @return the lbl2
-	 */
-	public JLabel getLbl2() {
-		return lbl2;
-	}
+			/**
+			 * @param screen the screen to set
+			 */
+			public void setScreen(JLabel screen) {
+				this.screen = screen;
+			}
 
-	/**
-	 * @param lbl2 the lbl2 to set
-	 */
-	public void setLbl2(JLabel lbl2) {
-		this.lbl2 = lbl2;
-	}
+			/**
+			 * @return the numberTmp
+			 */
+			public double getNumberTmp() {
+				return numberTmp;
+			}
 
-	/**
-	 * @return the result
-	 */
-	public double getResult() {
-		return result;
-	}
+			/**
+			 * @param numberTmp the numberTmp to set
+			 */
+			public void setNumberTmp(double numberTmp) {
+				this.numberTmp = numberTmp;
+			}
 
-	/**
-	 * @param result the result to set
-	 */
-	public void setResult(double result) {
-		this.result = result;
-	}
+			/**
+			 * @return the result
+			 */
+			public String getResult() {
+				return result;
+			}
 
-	/**
-	 * @return the operation
-	 */
-	public String getNumber() {
-		return number;
-	}
+			/**
+			 * @param result the result to set
+			 */
+			public void setResult(String result) {
+				this.result = result;
+			}
 
-	/**
-	 * @param operation the operation to set
-	 */
-	public void setNumber(String operation) {
-		this.number = operation;
-	}
+			/**
+			 * @return the operation
+			 */
+			public char getOperation() {
+				return operation;
+			}
 
+			/**
+			 * @param operation the operation to set
+			 */
+			public void setOperation(char operation) {
+				this.operation = operation;
+			}
 
-	/**
-	 * @return the operation
-	 */
-	public char getOperation() {
-		return operation;
-	}
+			/**
+			 * @return the newOperation
+			 */
+			public boolean isNewOperation() {
+				return newOperation;
+			}
 
-	/**
-	 * @param operation the operation to set
-	 */
-	public void setOperation(char operation) {
-		this.operation = operation;
-	}
+			/**
+			 * @param newOperation the newOperation to set
+			 */
+			public void setNewOperation(boolean newOperation) {
+				this.newOperation = newOperation;
+			}
+
+	// Getters & Setters
+
 
 }
