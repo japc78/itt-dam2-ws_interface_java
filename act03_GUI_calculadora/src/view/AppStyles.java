@@ -3,9 +3,11 @@ package view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
+import java.awt.Image;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.border.Border;
 
 /**
@@ -13,14 +15,16 @@ import javax.swing.border.Border;
  */
 public class AppStyles {
 	private Font font, fontButtom, fontScreen, fontHistory;
-	Color color1, colorTxt;
-	Border border1, borderPadding, empyBorder;
+	private Color color1, colorTxt;
+	private Border border1, borderPadding, empyBorder;
+	private Image imgBtnRobot;
 
 
 	public AppStyles() {
-		// Fuente
 		try {
+			// Fuente
 			font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("../resources/Quantico-Italic.ttf"));
+			imgBtnRobot = new ImageIcon("src/resources/avatar.png").getImage();
 		} catch (FontFormatException | IOException e)  {
 			e.printStackTrace();
 		}
@@ -95,4 +99,12 @@ public class AppStyles {
 	public Border getEmpyBorder() {
 		return empyBorder;
 	}
+
+	/**
+	 * @return the imgBtnRobot
+	 */
+	public Image getImgBtnRobot() {
+		return imgBtnRobot;
+	}
+
 }

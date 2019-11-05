@@ -12,7 +12,7 @@ public class PanelScreen extends JPanel {
 	private double numberTmp;
 	private String result;
 	private char operation;
-	private boolean newOperation;
+	private boolean newOperation, newNumber;
 
 
 	/**
@@ -24,7 +24,8 @@ public class PanelScreen extends JPanel {
 		result = "0";
 		numberTmp = 0;
 		operation = '0';
-		newOperation = true;
+		newOperation = false;
+		newNumber = true;
 		// Se define un grid para el panel.
 		setLayout(new GridBagLayout());
 		grid = new GridBagConstraints();
@@ -38,7 +39,7 @@ public class PanelScreen extends JPanel {
 	public void initComponents() {
 		AppStyles styles = new AppStyles();
 		// Label donde se ven los resultados.
-			history = new JLabel();
+			history = new JLabel(" ");
 			history.setFont(styles.getFontHistory());
 			history.setHorizontalAlignment(JTextField.RIGHT);
 			history.setBorder(BorderFactory.createCompoundBorder(history.getBorder(), styles.getEmpyBorder()));
@@ -71,7 +72,8 @@ public class PanelScreen extends JPanel {
 			grid.gridheight = 2;
 			add(screen, grid);
 	}
-		// Getteres
+
+	// Getteres
 			/**
 			 * @return the history
 			 */
@@ -156,7 +158,21 @@ public class PanelScreen extends JPanel {
 				this.newOperation = newOperation;
 			}
 
-	// Getters & Setters
+			/**
+			 * @return the newOperation
+			 */
+			public boolean isNewNumber() {
+				return newNumber;
+			}
+
+			/**
+			 * @param newOperation the newOperation to set
+			 */
+			public void setNewNumber(boolean newNumber) {
+				this.newNumber = newNumber;
+			}
+
+
 
 
 }

@@ -95,8 +95,8 @@ public class AppInterface extends JFrame {
 	}
 
 	public void initActions(AppActionListener actions, AppMouseListener mouse, AppKeyListener key) {
+		new AppKeyListener(this);
 		for (JButton btn : panelButtons.getBtns()) {
-			new AppKeyListener(this);
 			btn.addActionListener(new AppActionListener(this));
 			btn.addMouseListener(new AppMouseListener(this));
 		}

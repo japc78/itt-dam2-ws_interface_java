@@ -3,6 +3,7 @@ package view;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -43,16 +44,18 @@ public class PanelButtons extends JPanel{
 
 			btns.get(i).setFont(styles.getFontButtom());
 			btns.get(i).setBorder(null);
-			btns.get(i).setBorder(styles.empyBorder);
+			btns.get(i).setBorder(styles.getEmpyBorder());
 			btns.get(i).setBorderPainted(false);
 			btns.get(i).setContentAreaFilled(false);
-			btns.get(i).setBackground(styles.color1);
+			btns.get(i).setBackground(styles.getColor1());
 			btns.get(i).setFocusPainted(false);
 			btns.get(i).setHorizontalAlignment(SwingConstants.CENTER);
 			add(btns.get(i));
 		}
 
-		btns.get(2).setText("CE");
+		btns.get(0).setIcon(new ImageIcon(styles.getImgBtnRobot()));;
+		btns.get(1).setText("CE");
+		btns.get(2).setText("<");
 		btns.get(18).setText(",");
 		btns.get(3).setText("÷");
 		btns.get(7).setText("×");
@@ -64,10 +67,6 @@ public class PanelButtons extends JPanel{
 		for (JButton btn : btns) {
 			btn.setName("btn" + btn.getText());
 		}
-	}
-
-	public void initActions(AppActionListener e, AppKeyListener l) {
-
 	}
 
 	/**
