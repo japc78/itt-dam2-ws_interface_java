@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
 import view.AppInterface;
 
 /**
@@ -29,7 +30,7 @@ public class AppKeyListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-
+		i.getToolkit().beep();
 	}
 
 	@Override

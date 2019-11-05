@@ -24,6 +24,7 @@ public class PanelScreen extends JPanel {
 		result = "0";
 		numberTmp = 0;
 		operation = '0';
+		newOperation = true;
 		// Se define un grid para el panel.
 		setLayout(new GridBagLayout());
 		grid = new GridBagConstraints();

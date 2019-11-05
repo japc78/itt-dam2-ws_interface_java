@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -13,11 +12,9 @@ import view.*;
  */
 public class AppMouseListener implements MouseListener {
 	private AppInterface i;
-	private AppStyles styles;
 
 	public AppMouseListener(AppInterface i) {
 		this.i = i;
-		styles = new AppStyles();
 	}
 
 

@@ -4,9 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.AppActionListener;
+import controller.AppKeyListener;
 import controller.AppMouseListener;
 
-import java.io.IOException;
 
 
 /**
@@ -38,7 +38,7 @@ public class AppInterface extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/rocket.png"));
 
 		// Se define en el tamaño de la ventana
-		setSize(300, 480);
+		setSize(400, 480);
 
 		// Se define el comportamiento al cerrar la aplicación.
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -94,8 +94,9 @@ public class AppInterface extends JFrame {
 			add(panelButtons, grid);
 	}
 
-	public void initActions(AppActionListener actions, AppMouseListener mouse) {
+	public void initActions(AppActionListener actions, AppMouseListener mouse, AppKeyListener key) {
 		for (JButton btn : panelButtons.getBtns()) {
+			new AppKeyListener(this);
 			btn.addActionListener(new AppActionListener(this));
 			btn.addMouseListener(new AppMouseListener(this));
 		}
