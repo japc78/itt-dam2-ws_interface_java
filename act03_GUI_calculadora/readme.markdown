@@ -11,22 +11,6 @@ Las clases realizadas se encuentran comentadas paso por paso. Algunos comentario
 
 La tecnología utilizada `Java` con las clases `Swing`,  `JButton`, `JFrame`, `JLabel`, `JTextField`, `KeyEvent`,`KeyListener`, `ActionEvent`, `ActionListener`.
 
-## Creación del .jar desde la terminal.
-Se crea `meta-inf/manifest.mf` en la carpeta `bin`, en el archivo `manifest.mf` se indica, con la siguiente línea, la clase principal que ejecta el `main`.
-```
-Main-Class: controller.App
-```
-Desde la terminal, en la carpeta `bin` donde estan las clases compiladas. El último `.` hace que se empaquete todas los paquetes y clases que esten contenidos en la carpeta `bin`. 
-
-```
-jar cfm ../calc.jar meta-inf/manifest.mf .
-```
-
-Para la ejecución desde la terminal: 
-```
-java -jar calc.jar
-```
-
 ## Herramientas y recursos.
 Como herramienta IDE/Editor **Vs Code**, con las siguientes extensiones:
 - [Java Extension Pack](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
