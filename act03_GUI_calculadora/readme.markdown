@@ -32,6 +32,7 @@ Como herramienta IDE/Editor **Vs Code**, con las siguientes extensiones:
 -[Ejemplo de uso del GridBagLayout](http://www.chuidiang.org/java/layout/GridBagLayout/GridBagLayout.php)
 -[¿Cómo funciona GridBagLayout?](https://riptutorial.com/es/swing/example/10132/-como-funciona-gridbaglayout-)
 -[Unicode symbols, entities and codes](https://www.htmlsymbols.xyz/search)
+-[Java JOptionPane.showMessageDialog custom icon problem?](https://stackoverflow.com/questions/6975736/java-joptionpane-showmessagedialog-custom-icon-problem)
 
 Juan Antonio Pavón Carmona.  
 Programación de servicios y procesos.  

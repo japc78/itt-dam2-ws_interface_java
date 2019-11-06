@@ -4,7 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.AppActionListener;
-import controller.AppKeyListener;
 import controller.AppMouseListener;
 
 
@@ -111,11 +110,8 @@ public class AppInterface extends JFrame {
 			add(panelButtons, grid);
 	}
 
-	public void initActions(AppActionListener actions, AppMouseListener mouse, AppKeyListener key) {
-		new AppKeyListener(this);
-
+	public void initActions(AppActionListener actions, AppMouseListener mouse) {
 		login.addActionListener(actions);
-
 		for (JButton btn : panelButtons.getBtns()) {
 			btn.addActionListener(new AppActionListener(this));
 			btn.addMouseListener(new AppMouseListener(this));

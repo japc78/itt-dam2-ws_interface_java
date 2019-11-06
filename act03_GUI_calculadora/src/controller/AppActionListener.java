@@ -65,9 +65,7 @@ public class AppActionListener implements ActionListener {
 				} else if (Double.parseDouble(result) != 0) {
 					result = result.substring(1);
 				}
-				// result =  (Double.parseDouble(result) >= 0)? "-" + result : result.substring(1);
 				i.getPanelScreen().getScreen().setText(result);
-				// i.getPanelScreen().setNewOperation(false);
 			break;
 
 			case ",":
@@ -106,6 +104,7 @@ public class AppActionListener implements ActionListener {
 						} else if (operation == '/') {
 							// Se comprueba que si el segundo número es 0
 							result = (Double.parseDouble(result) != 0 )? String.valueOf(numberTmp/Double.parseDouble(result)):"Error / por 0";
+							i.getPanelScreen().getHistory().setText(" ");
 						}
 
 						result = isInteger(result);
@@ -191,6 +190,9 @@ public class AppActionListener implements ActionListener {
 		}
 	}
 
+	/**
+	 * Metodo para resertear la calculadora.
+	 */
 	private void reset() {
 		i.getPanelScreen().getScreen().setText("0");
 		i.getPanelScreen().setNumberTmp(0);
@@ -220,6 +222,11 @@ public class AppActionListener implements ActionListener {
 	}
 
 	// Metodo de operaciones
+
+	/**
+	 * Metodo para realizar las opraciones matematicas basicas, sele pasa por parametro la operacion a realizar.
+	 * @param c Del tipo Char. Operacion matematica basica +,-,×,÷
+	 */
 	private void operation(char c) {
 		i.getPanelScreen().setOperation(c);
 		if ((operation == '0') && (newOperation)) history(c);
@@ -241,6 +248,8 @@ public class AppActionListener implements ActionListener {
 				history(c);
 				// Se comprueba que si el segundo número es 0
 				result = (Double.parseDouble(result) != 0 )? String.valueOf(numberTmp/Double.parseDouble(result)):"Error / por 0";
+				i.getPanelScreen().getHistory().setText(" ");
+
 			}
 
 			result = isInteger(result);
@@ -258,6 +267,10 @@ public class AppActionListener implements ActionListener {
 		// System.out.println("newOperation: " + i.getPanelScreen().isNewOperation());
 	}
 
+	/**
+	 * Metodo para mostrar el historial de operaciones. Se le pasa por parametro la opracion que se realiza.
+	 * @param c Del tipo Char. Operacion matematica basica +,-,×,÷
+	 */
 	private void history(char c) {
 		history += result + c;
 		i.getPanelScreen().getHistory().setText(history);
