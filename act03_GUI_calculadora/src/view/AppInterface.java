@@ -27,6 +27,9 @@ public class AppInterface extends JFrame {
 	private GridBagConstraints grid;
 	private PanelScreen panelScreen;
 	private PanelButtons panelButtons;
+	private JMenuBar menuBar;
+	private JMenu menuGo;
+	private JMenuItem login;
 
 	/**
 	 * Constructor sin parametros de la interface de la Caculadora.
@@ -39,6 +42,7 @@ public class AppInterface extends JFrame {
 
 		// Se define en el tamaño de la ventana
 		setSize(400, 480);
+		setMinimumSize(new Dimension(400, 480));
 
 		// Se define el comportamiento al cerrar la aplicación.
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -57,6 +61,8 @@ public class AppInterface extends JFrame {
 		// Se indica que aparezca en el centro de la pantalla.
 		setLocationRelativeTo(null);
 
+		setJMenuBar (menuBar);
+
 		// Se inicializa los componentes
 		initComponets();
 
@@ -65,6 +71,17 @@ public class AppInterface extends JFrame {
 	}
 
 	public void initComponets() {
+		// MenuBar
+			menuBar = new JMenuBar();
+			add(menuBar);
+			menuBar.setSize(400, 30);
+
+			menuGo = new JMenu("Go");
+			menuBar.add(menuGo);
+
+			login = new JMenuItem("Login");
+			menuGo.add(login);
+
 		// Panel superior
 			panelScreen = new PanelScreen();
 			// Posición en el grid, eje x y.
@@ -96,6 +113,9 @@ public class AppInterface extends JFrame {
 
 	public void initActions(AppActionListener actions, AppMouseListener mouse, AppKeyListener key) {
 		new AppKeyListener(this);
+
+		login.addActionListener(actions);
+
 		for (JButton btn : panelButtons.getBtns()) {
 			btn.addActionListener(new AppActionListener(this));
 			btn.addMouseListener(new AppMouseListener(this));
@@ -128,5 +148,12 @@ public class AppInterface extends JFrame {
 	 */
 	public void setPanelButtons(PanelButtons panelButtons) {
 		this.panelButtons = panelButtons;
+	}
+
+	/**
+	 * @return the login
+	 */
+	public JMenuItem getLogin() {
+		return login;
 	}
 }

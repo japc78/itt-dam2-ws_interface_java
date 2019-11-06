@@ -8,10 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import controller.AppActionListener;
-import controller.AppKeyListener;
-
-
 /**
  * AppInterfaceBottom
  */
@@ -53,7 +49,7 @@ public class PanelButtons extends JPanel{
 			add(btns.get(i));
 		}
 
-		btns.get(0).setIcon(new ImageIcon(styles.getImgBtnRobot()));;
+		btns.get(0).setIcon(new ImageIcon(styles.getImgBtnRobot()));
 		btns.get(1).setText("CE");
 		btns.get(2).setText("<");
 		btns.get(18).setText(",");

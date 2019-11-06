@@ -12,8 +12,7 @@ public class PanelScreen extends JPanel {
 	private double numberTmp;
 	private String result;
 	private char operation;
-	private boolean newOperation, newNumber;
-
+	private boolean newOperation, newNumber, login;
 
 	/**
 	 *
@@ -26,6 +25,7 @@ public class PanelScreen extends JPanel {
 		operation = '0';
 		newOperation = false;
 		newNumber = true;
+		login = false;
 		// Se define un grid para el panel.
 		setLayout(new GridBagLayout());
 		grid = new GridBagConstraints();
@@ -172,7 +172,17 @@ public class PanelScreen extends JPanel {
 				this.newNumber = newNumber;
 			}
 
+			/**
+			 * @return the login
+			 */
+			public boolean isLogin() {
+				return login;
+			}
 
-
-
+			/**
+			 * @param login the login to set
+			 */
+			public void setLogin(boolean login) {
+				this.login = login;
+			}
 }

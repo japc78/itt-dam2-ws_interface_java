@@ -1,10 +1,10 @@
 package controller;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
-import javax.swing.JButton;
+import javax.swing.*;
 
 import view.AppInterface;
 
@@ -24,7 +24,7 @@ public class AppActionListener implements ActionListener {
 	private double numberTmp;
 	private String result, history;
 	private char operation;
-	private boolean newOperation, newNumber;
+	private boolean newOperation, newNumber, login;
 
 	public AppActionListener(AppInterface i) {
 		this.i = i;
@@ -40,6 +40,7 @@ public class AppActionListener implements ActionListener {
 		numberTmp = i.getPanelScreen().getNumberTmp();
 		newNumber = i.getPanelScreen().isNewNumber();
 		newOperation = i.getPanelScreen().isNewOperation();
+		login = i.getPanelScreen().isLogin();
 
 		switch (e.getActionCommand()) {
 			case "+":
@@ -59,9 +60,14 @@ public class AppActionListener implements ActionListener {
 			break;
 
 			case "±":
-				result =  (Double.parseDouble(result) > 0)? "-" + result : result.substring(1);
+				if (Double.parseDouble(result) > 0) {
+					result = "-" + result;
+				} else if (Double.parseDouble(result) != 0) {
+					result = result.substring(1);
+				}
+				// result =  (Double.parseDouble(result) >= 0)? "-" + result : result.substring(1);
 				i.getPanelScreen().getScreen().setText(result);
-				i.getPanelScreen().setNewOperation(false);
+				// i.getPanelScreen().setNewOperation(false);
 			break;
 
 			case ",":
@@ -80,25 +86,16 @@ public class AppActionListener implements ActionListener {
 			break;
 
 			case "CE":
-				i.getPanelScreen().getScreen().setText("0");
-				i.getPanelScreen().setNumberTmp(0);
-				i.getPanelScreen().setOperation('0');
-				i.getPanelScreen().setNewOperation(false);
-				i.getPanelScreen().setNewNumber(true);
-				i.getPanelScreen().getHistory().setText(" ");;
-
-
-				System.out.println("Reset Pantalla: "  + i.getPanelScreen().getScreen().getText());
-				System.out.println("Reset NewNumber: "  + i.getPanelScreen().isNewNumber());
-				System.out.println("Reset NewOperatio: "  + i.getPanelScreen().isNewOperation());
-				System.out.println("Reset NewOperatio: "  + i.getPanelScreen().getOperation());
+				reset();
+				// System.out.println("Reset NewNumber: "  + i.getPanelScreen().isNewNumber());
+				// System.out.println("Reset NewOperatio: "  + i.getPanelScreen().isNewOperation());
+				// System.out.println("Reset NewOperatio: "  + i.getPanelScreen().getOperation());
 			break;
 
 			case "=":
 				// Asignación de operaciones a los botones (Sumar, Restar, Multiplicar, dividir)
-				if (i.getPanelScreen().getOperation() != '0') {
-					history += result + operation;
-					i.getPanelScreen().getHistory().setText(history);
+				if (operation != '0') {
+					history(operation);
 					try {
 						if (operation == '+') {
 							result = String.valueOf(numberTmp + Double.parseDouble(result));
@@ -128,42 +125,79 @@ public class AppActionListener implements ActionListener {
 			default:
 				for (JButton btn : i.getPanelButtons().getBtns()) {
 					if (e.getSource().equals(btn)) {
-						// System.out.println("Operation: " + i.getPanelScreen().isNewOperation());
-						System.out.println("NewNumber: " + i.getPanelScreen().isNewNumber());
-
 						if (newNumber) {
 							result = "";
 							i.getPanelScreen().getScreen().setText("");
 							i.getPanelScreen().setNewNumber(false);
 						}
 
-						// if (i.getPanelScreen().getOperation() != '0') result = ""; i.getPanelScreen().getScreen().setText("");
-						// if (i.getPanelScreen().isNewOperation()) result = ""; i.getPanelScreen().getScreen().setText(""); i.getPanelScreen().setNewOperation(false);
 						i.getPanelScreen().getScreen().setText(result + btn.getText());
 						i.getPanelScreen().setNewOperation(true);
-						System.out.println("Foreach JButton");
-						System.out.println("Operation: " + i.getPanelScreen().getOperation());
-						System.out.println("NewNumber: " + i.getPanelScreen().isNewNumber());
-						System.out.println("NewOperation: " + i.getPanelScreen().isNewOperation());
-						System.out.println("Pantalla: " + i.getPanelScreen().getScreen().getText());
-						System.out.println("-----------");
+
+						// System.out.println("Foreach JButton");
+						// System.out.println("Operation: " + i.getPanelScreen().getOperation());
+						// System.out.println("NewNumber: " + i.getPanelScreen().isNewNumber());
+						// System.out.println("NewOperation: " + i.getPanelScreen().isNewOperation());
+						// System.out.println("Pantalla: " + i.getPanelScreen().getScreen().getText());
+						// System.out.println("-----------");
 					}
 				}
-				// i.getPanelScreen().getScreen().setText(number);
 			break;
 		}
 
-/* 		for (JButton btn : i.getPanelButtons().getBtns()) {
+		if (e.getSource().equals(i.getPanelButtons().getBtns().get(0))) {
 
-			if ((e.getSource().equals(btn)) && ((btn.getText().charAt(0) >= 0) || ((btn.getText().charAt(0) <= 9)))) {
-				System.out.println("pasa");
-				operation += btn.getText();
-				// i.getPanelScreen().getLbl2().setText(btn.getText());
+			if (login) {
+				final ImageIcon icon = new ImageIcon("src/resources/bender.png");
+				JOptionPane.showMessageDialog(null,"Usuario Bender", "user", JOptionPane.PLAIN_MESSAGE, icon);
+			} else {
+				JOptionPane.showMessageDialog(null,"Funcionalidad no disponible","Alert!",
+				JOptionPane.ERROR_MESSAGE);
 			}
-		}*/
+			reset();
+		}
 
+		if (e.getSource().equals(i.getLogin()))  {
+			// Panel para la contraseña
+			JPanel panelLogin = new JPanel();
 
+			String pass = "bender";
 
+			Image userImg = new ImageIcon("src/resources/human.png").getImage();
+			JLabel lblImage = new JLabel(new ImageIcon(userImg.getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+			panelLogin.add(lblImage);
+
+			JLabel lblPass = new JLabel("Pass:");
+			panelLogin.add(lblPass);
+
+			JPasswordField inputPass = new JPasswordField(10);
+			panelLogin.add(inputPass);
+
+			String[] loginOption = new String[]{"OK", "Cancel"};
+			int option = JOptionPane.showOptionDialog(null, panelLogin, "Login", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, loginOption, loginOption[1]);
+
+			if (option == 0) {
+				char[] password = inputPass.getPassword();
+				if (pass.equals(String.valueOf(password))) {
+					System.out.println("pasa");
+					JOptionPane.showMessageDialog(null,"Bienvenido Bender", "Kraftwerk", JOptionPane.INFORMATION_MESSAGE);
+
+					i.setTitle("Robot: Bender");
+					i.getPanelScreen().setLogin(true);
+				} else {
+					JOptionPane.showMessageDialog(null,"Contraseña incorrecta", "Kraftwerk", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		}
+	}
+
+	private void reset() {
+		i.getPanelScreen().getScreen().setText("0");
+		i.getPanelScreen().setNumberTmp(0);
+		i.getPanelScreen().setOperation('0');
+		i.getPanelScreen().setNewOperation(false);
+		i.getPanelScreen().setNewNumber(true);
+		i.getPanelScreen().getHistory().setText(" ");
 	}
 
 	/**
@@ -175,8 +209,8 @@ public class AppActionListener implements ActionListener {
 		// Para quitar los decimales si el número es entero
 		String[] r = result.split("[.]");
 
-		System.out.println("IsInteger splid: " + Arrays.toString(r));
-		System.out.println("IsInteger splid length: " + r.length);
+		// System.out.println("IsInteger splid: " + Arrays.toString(r));
+		// System.out.println("IsInteger splid length: " + r.length);
 
 		// Se comprueba que el resultado no sea un numero largo del tipo E(elevado), para que no salte la excepción al pasear con el Long.
 		if ((r.length > 1)  && (result.indexOf("E") == -1)){
@@ -188,20 +222,23 @@ public class AppActionListener implements ActionListener {
 	// Metodo de operaciones
 	private void operation(char c) {
 		i.getPanelScreen().setOperation(c);
-		history += result + c;
-		i.getPanelScreen().getHistory().setText(history);
+		if ((operation == '0') && (newOperation)) history(c);
 		// System.out.println("numberTmp: " + numberTmp);
 
 		try {
 			if ((operation == '+') && (newOperation)) {
 				// System.out.println("Result: " + result);
+				history(c);
 				result = String.valueOf(numberTmp + Double.parseDouble(result));
 				// System.out.println("Resultado: "  + result);
 			} else if ((operation == '-') && (newOperation)) {
+				history(c);
 				result = String.valueOf(numberTmp - Double.parseDouble(result));
 			} else if ((operation == '×') && (newOperation)) {
+				history(c);
 				result = String.valueOf(numberTmp * Double.parseDouble(result));
 			} else if ((operation == '/') && (newOperation)) {
+				history(c);
 				// Se comprueba que si el segundo número es 0
 				result = (Double.parseDouble(result) != 0 )? String.valueOf(numberTmp/Double.parseDouble(result)):"Error / por 0";
 			}
@@ -219,5 +256,10 @@ public class AppActionListener implements ActionListener {
 		// System.out.println("Operation: " + c);
 		// System.out.println("Result: " + result);
 		// System.out.println("newOperation: " + i.getPanelScreen().isNewOperation());
+	}
+
+	private void history(char c) {
+		history += result + c;
+		i.getPanelScreen().getHistory().setText(history);
 	}
 }
