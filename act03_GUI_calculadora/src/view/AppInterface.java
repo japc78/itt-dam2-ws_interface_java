@@ -2,7 +2,10 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
-import java.io.IOException;
+
+import controller.AppActionListener;
+import controller.AppMouseListener;
+
 
 
 /**
@@ -21,6 +24,11 @@ import java.io.IOException;
 public class AppInterface extends JFrame {
 	private static final long serialVersionUID = 3294244089057792643L;
 	private GridBagConstraints grid;
+	private PanelScreen panelScreen;
+	private PanelButtons panelButtons;
+	private JMenuBar menuBar;
+	private JMenu menuGo;
+	private JMenuItem login;
 
 	/**
 	 * Constructor sin parametros de la interface de la Caculadora.
@@ -32,7 +40,8 @@ public class AppInterface extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("src/resources/rocket.png"));
 
 		// Se define en el tamaño de la ventana
-		setSize(300, 480);
+		setSize(400, 480);
+		setMinimumSize(new Dimension(400, 480));
 
 		// Se define el comportamiento al cerrar la aplicación.
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -51,6 +60,8 @@ public class AppInterface extends JFrame {
 		// Se indica que aparezca en el centro de la pantalla.
 		setLocationRelativeTo(null);
 
+		setJMenuBar (menuBar);
+
 		// Se inicializa los componentes
 		initComponets();
 
@@ -59,7 +70,19 @@ public class AppInterface extends JFrame {
 	}
 
 	public void initComponets() {
+		// MenuBar
+			menuBar = new JMenuBar();
+			add(menuBar);
+			menuBar.setSize(400, 30);
+
+			menuGo = new JMenu("Go");
+			menuBar.add(menuGo);
+
+			login = new JMenuItem("Login");
+			menuGo.add(login);
+
 		// Panel superior
+			panelScreen = new PanelScreen();
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
 			grid.gridy = 0;
@@ -69,9 +92,12 @@ public class AppInterface extends JFrame {
 			grid.gridheight = 3;
 
 			// Se añade el panel pasandole grid con los voleres anteriormente declardos.
-			add(new AppInterfaceTop(), grid);
+			add(panelScreen, grid);
 
 		// Panel inferior
+			panelButtons = new PanelButtons();
+			panelButtons.setBorder(null);
+			panelButtons.setBackground(null);
 			// Posición en el grid, eje x y.
 			grid.gridx = 0;
 			grid.gridy = 3;
@@ -81,6 +107,49 @@ public class AppInterface extends JFrame {
 			grid.gridheight = 5;
 
 			// Se añade el panel pasandole grid con los voleres anteriormente declardos.
-			add(new AppInterfaceBottom(), grid);
+			add(panelButtons, grid);
+	}
+
+	public void initActions(AppActionListener actions, AppMouseListener mouse) {
+		login.addActionListener(actions);
+		for (JButton btn : panelButtons.getBtns()) {
+			btn.addActionListener(new AppActionListener(this));
+			btn.addMouseListener(new AppMouseListener(this));
+		}
+	}
+
+	/**
+	 * @return the panelScreen
+	 */
+	public PanelScreen getPanelScreen() {
+		return panelScreen;
+	}
+
+	/**
+	 * @param panelScreen the panelScreen to set
+	 */
+	public void setPanelScreen(PanelScreen panelScreen) {
+		this.panelScreen = panelScreen;
+	}
+
+	/**
+	 * @return the panelButtons
+	 */
+	public PanelButtons getPanelButtons() {
+		return panelButtons;
+	}
+
+	/**
+	 * @param panelButtons the panelButtons to set
+	 */
+	public void setPanelButtons(PanelButtons panelButtons) {
+		this.panelButtons = panelButtons;
+	}
+
+	/**
+	 * @return the login
+	 */
+	public JMenuItem getLogin() {
+		return login;
 	}
 }
